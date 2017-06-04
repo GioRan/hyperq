@@ -9,7 +9,7 @@ window.events = function(){
 				window.info.client.isLoggedIn = false;
 				window.template.navbarTemplate();
 				window.template.sidebarTemplate();
-				//window.location.href = "http://localhost/GIO/login";
+				//window.location.href = "http://hyperq.com/GIO/login";
 			}
 		});
 	}

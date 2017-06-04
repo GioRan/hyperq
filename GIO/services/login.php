@@ -1,6 +1,6 @@
 <?php
 	require('connection/connection.php');
-	
+
 	$username = $_POST['contact']; 
 	$password = $_POST['password']; 
 
