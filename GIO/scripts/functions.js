@@ -13,7 +13,7 @@ window.functions = {
 					window.services.checkLoginSession(function success(result){
 						var result = JSON.parse(result);
 						if(result.status == 1){
-							window.location.href = "./GIO/index";
+							window.location.href = "./index";
 						} else if(result.status == 0){
 							window.template.loginTemplate();
 						}
@@ -38,7 +38,7 @@ window.functions = {
 							window.template.sidebarTemplate();
 							window.template.userInfoTemplate();
 						} else if(result.status == 0){
-							window.location.href = "./GIO/login";
+							window.location.href = "./login";
 						}
 					});	
 					break;
@@ -92,7 +92,7 @@ window.functions = {
 						$("#contactError").html("<span class='mdl-textfield__error'>Contact Number is already existing.</span>");
 						$("#contactTextField").addClass("is-invalid");
 					} else if(result == 1){
-						//window.location.href = "./GIO/login";
+						//window.location.href = "./login";
 						$(".modal").modal("close");
 						window.events.submitModal();
 					}

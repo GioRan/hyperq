@@ -41,9 +41,9 @@ window.template = {
 		var sidebar = $("<ul id='slide-out' class='side-nav'>" +
 							"<li><div class='userView'>" +
 								"<div class='background'>" +
-									"<img class='override-sidebar-background-img' src='./GIO/images/sidebar-img.jpg'>" +
+									"<img class='override-sidebar-background-img' src='./images/sidebar-img.jpg'>" +
 								"</div>" +
-								"<img class='circle' src='./GIO/images/sidebar-profile-img.png'>" +
+								"<img class='circle' src='./images/sidebar-profile-img.png'>" +
 								"<span class='white-text name flow-text'><b>" + window.info.client.clientName + "</b></span>" +
 								"<span class='white-text email flow-text'><b>" + window.info.client.clientContact + "</b></span>" +
 							"</div></li>" +
@@ -99,7 +99,7 @@ window.template = {
 							"<div id='userInfoError' class='ui error message'></div>" +
 						"</div>");
 		if($(".indexMain").length == 0){
-			$(".nav-wrapper").html("<a href='./GIO/index' class='left brand-logo button-collapse override-navbar-button-collapse'><i class='material-icons'>arrow_back</i></a>");
+			$(".nav-wrapper").html("<a href='./index' class='left brand-logo button-collapse override-navbar-button-collapse'><i class='material-icons'>arrow_back</i></a>");
 			$("body").append("<div class='indexMain'></div>");
 			$(".indexMain").html(userInfo);
 		} else{

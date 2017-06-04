@@ -2,7 +2,7 @@ window.services = {
 	//register new client
     register: function(data, success){
         $.ajax({
-            url: "./GIO/services/registration.php",
+            url: "./services/registration.php",
             data: data,
             type: "POST",
 			method: "POST",
@@ -17,7 +17,7 @@ window.services = {
 	//validate login client
     login: function(data, success){
         $.ajax({
-            url: "./GIO/services/login.php",
+            url: "./services/login.php",
             data: data,
             type: "POST",
 			method: "POST",
@@ -32,7 +32,7 @@ window.services = {
 	//get foods from db
 	getFoods: function(success){
 		$.ajax({
-            url: "./GIO/services/fetchItems.php",
+            url: "./services/fetchItems.php",
             type: "GET",
             success: function(data){
                 success(data);
@@ -45,7 +45,7 @@ window.services = {
 	//submit order from client
 	postOrder: function(data, success){
 		$.ajax({
-			url: "./GIO/services/ordering.php",
+			url: "./services/ordering.php",
 			data: data,
 			type: "POST",
 			method: "POST",
@@ -60,7 +60,7 @@ window.services = {
 	//check if user is logged in
 	checkLoginSession: function(success){
 		$.ajax({
-			url: "./GIO/services/checkLoginSession.php",
+			url: "./services/checkLoginSession.php",
 			type: "GET",
 			success: function(data){
 				success(data);
@@ -69,7 +69,7 @@ window.services = {
 	},
 	signOut: function(success){
 		$.ajax({
-			url: "./GIO/services/logout.php",
+			url: "./services/logout.php",
 			type: "GET",
 			success: function(data){
 				success(data);
