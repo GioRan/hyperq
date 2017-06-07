@@ -129,6 +129,7 @@ window.functions = {
 	},
 	userInfoUpdate: function(data){
 		if(data.name == window.info.client.clientName && data.contact == window.info.client.clientContact){
+			$(".modal").modal("close");
 			var modal = window.template.userInfoNoUpdateModal();
 			$("#modalContainer").html(modal);
 			$(".modal").modal({
@@ -146,11 +147,29 @@ window.functions = {
 			} else if(data.contact.trim() == ""){
 				$("#contactError").html("<span class='mdl-textfield__error'>This field is required.</span>");
 				$("#contactTextField").addClass("is-invalid");
-			}	
+			} else{
+				var data = {
+					id: localStorage.clientId,
+					name: data.name,
+					contact: data.contact,
+				}
+				window.services.updateInfo(data, function success(result){
+					if(result == 1){
+						$(".modal").modal("close");
+						var modal = window.template.userInfoSavedModal();
+						$("#modalContainer").html(modal);
+						$(".modal").modal({
+							dismissible: true, // Modal can be dismissed by clicking outside of the modal
+							opacity: .5, // Opacity of modal background
+							inDuration: 300, // Transition in duration
+							outDuration: 200, // Transition out duration
+							startingTop: '4%', // Starting top style attribute
+							endingTop: '30%' // Ending top style attribute
+						}).modal("open");
+					}
+				});
+			}
 		}
-	},
-	renderCreateAccountForm: function(){
-		
 	},
 	//user event on submitting order
 	submitOrder: function(data){

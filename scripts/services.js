@@ -75,5 +75,16 @@ window.services = {
 				success(data);
 			}
 		});
+	},
+	updateInfo: function(data, success){
+		$.ajax({
+			url: "./services/updateUserInfo.php",
+			type: "POST",
+			data: data,
+			method: "POST",
+			success: function(data){
+				success(data);
+			}
+		});
 	}
 }

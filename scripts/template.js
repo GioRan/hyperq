@@ -271,5 +271,16 @@ window.template = {
 						"</div>" +
 					"</div>");
 		return modal;
+	},
+	userInfoSavedModal: function(){
+		var modal = $("<div class='modal'>" +
+						"<div class='modal-content'>" +	
+							"<p> Update saved.</p>" +
+						"</div>" +	
+						"<div class='modal-footer'>" +
+							"<button class='modal-action modal-close waves-effect waves-teal btn-flat'>OK</button>" +
+						"</div>" +
+					"</div>");
+		return modal;
 	}
 }
