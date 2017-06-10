@@ -24,10 +24,13 @@ window.functions = {
 					window.template.sidebarTemplate();
 					window.functions.initializeFoods();
 					break;
+				case "مشرف":
+					$("head").append("<script async src='./scripts/admin.js'></script>");
+					break;
 				default:
 					return false;
 			}
-		} else if(data.page != "" && data.param1 != ""){
+		} /*else if(data.page != "" && data.param1 != ""){
 			switch(data.page && data.param1){
 				case "index" && "userInfo":
 					window.services.checkLoginSession(function success(result){
@@ -45,7 +48,7 @@ window.functions = {
 				default:
 					return false;
 			}
-		}
+		}*/
 	},
 	initializeFoods: function(){
 		window.services.getFoods(function success(result){
