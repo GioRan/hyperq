@@ -1,5 +1,8 @@
 <?php
 	require('connection/connection.php');
+	if(session_status() != PHP_SESSION_ACTIVE){
+		session_start();
+	}
 	$data = new stdClass();
 	if(isset($_SESSION['id'])){
 		
@@ -23,5 +26,5 @@
 		$data->status = 0;
 		echo json_encode($data);
 	}
-
+	//session_destroy();
 ?>

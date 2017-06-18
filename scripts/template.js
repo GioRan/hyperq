@@ -44,8 +44,8 @@ window.template = {
 									"<img class='override-sidebar-background-img' src='./images/sidebar-img.jpg'>" +
 								"</div>" +
 								"<img class='circle' src='./images/sidebar-profile-img.png'>" +
-								"<span class='white-text name flow-text'><b>" + window.info.client.clientName + "</b></span>" +
-								"<span class='white-text email flow-text'><b>" + window.info.client.clientContact + "</b></span>" +
+								"<span class='white-text name flow-text'><b>" + localStorage.clientName + "</b></span>" +
+								"<span class='white-text email flow-text'><b>" + localStorage.clientContact + "</b></span>" +
 							"</div></li>" +
 							"<li><a class='waves-effect' href='javascript:void(0)' onclick='events.userInfoModal()'><i class='material-icons'>info</i>User Information</a></li>" +
 							"<li><div class='divider'></div></li>" +

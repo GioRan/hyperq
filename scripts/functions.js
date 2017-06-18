@@ -117,15 +117,19 @@ window.functions = {
 		} else {
 			window.services.login(data, function success(result){
 				var result = JSON.parse(result);
-				if(result.status == 1){
+				if(result == 0){
+					$("#contactError").html("<span class='mdl-textfield__error'>Wrong Contact Number.</span>");
+					$("#contactTextField").addClass("is-invalid");
+					$("#passwordError").html("<span class='mdl-textfield__error'>Wrong Password.</span>");
+					$("#passwordTextField").addClass("is-invalid");
+					$("#progress").removeClass("progress");
+				} else{
 					window.info.pushToClientInfo(result.user);
 					window.info.client.isLoggedIn = true;
 					window.template.navbarTemplate();
 					window.template.sidebarTemplate();
 					$("#progress").removeClass("progress");
 					$(".modal").modal("close");
-				} else{
-					
 				}
 			});
 		}

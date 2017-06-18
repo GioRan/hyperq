@@ -36,4 +36,5 @@
 			echo "Error in query";
 		}
 	}
+	//session_destroy();
 ?>
