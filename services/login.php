@@ -3,7 +3,7 @@
 
 	$username = $_POST['contact']; 
 	$password = $_POST['password']; 
-
+	
 	if (isset($username) && isset($password)) {
 		$query = mysql_query("SELECT contact, password FROM tbl_user WHERE contact = '$username' AND password = '$password'");
 
@@ -13,6 +13,10 @@
 				$query = mysql_query("SELECT * FROM tbl_user WHERE contact = '$username' AND password = '$password'");
 				if($query){
 					$row = mysql_fetch_array($query);
+					
+					if(session_status() != 2){
+						session_start();
+					}
 					
 					$user = new stdClass();
 					
@@ -36,5 +40,4 @@
 			echo "Error in query";
 		}
 	}
-	//session_destroy();
 ?>

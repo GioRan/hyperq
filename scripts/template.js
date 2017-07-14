@@ -1,41 +1,38 @@
 window.template = {
 	indexTemplate: function(){
-		var md = new MobileDetect(window.navigator.userAgent);
-		var index = null;
-		if(md.mobile() != null){
-			index = $("<div>" +
-						"<div class='row' id='foods'>" +
-						"</div>" +
-					"</div>" +
-					"<button class='btn waves-effect waves-light index-button-mobile' onclick='events.submitModal()'>Submit</button>" +
-					"<div id='modalContainer'></div>");
-		} else{
-			index = $("<div>" +
+		var index = $("<div>" +
 						"<div class='row' id='foods'>" +
 						"</div>" +
 					"</div>" +
 					"<div id='modalContainer'></div>");
-		}
 		return index;
 	},
-	navbarTemplate: function(){
+	navbarTemplateMain: function(){
 		var navbar = $("<div class='navbar-fixed'>" +
 							"<nav class='override-navbar'>" +
 								"<div id='override-navbar-wrapper' class='nav-wrapper'>" +
 								"</div>" +
 							"</nav>" +
 						"</div>");
-		$(".navbarMain").html(navbar);
-		var isLoggedIn = window.info.client.isLoggedIn;
-		if(isLoggedIn){
-			$(".nav-wrapper").html("<a href='#!' data-activates='slide-out' class='left brand-logo button-collapse override-navbar-button-collapse'><i class='material-icons'>menu</i></a>");
-		}
-		var md = new MobileDetect(window.navigator.userAgent);
-		if(md.mobile() == null){
-			$("#override-navbar-wrapper").append("<ul id='override-navbarul' class='right override-navbarul'>" +
-													"<li><a class='overridde-button-flat waves-effect waves-teal btn-flat' href='javascript:void(0)' onclick='events.submitModal()'>Submit</a></li>" +
-												"</ul>");
-		}
+		return navbar;
+	},
+	navbarLoggedInTemplate: function(){
+		return $("<a href='#!' data-activates='slide-out' class='left brand-logo button-collapse override-navbar-button-collapse'>" +
+					"<i class='material-icons'>menu</i>" +
+				"</a>" +
+				"<ul id='override-navbarul' class='right override-navbarul'>" +
+					"<li>" +
+						"<a class='overridde-button-flat waves-effect waves-teal btn-flat' href='javascript:void(0)' onclick='events.submitModal()'>Submit</a>" +
+					"</li>" +
+				"</ul>");
+	},
+	navbarNotLoggedInTemplate: function(){
+		return $("<ul id='override-navbarul' class='right override-navbarul'>" +
+					"<li>" +
+						"<a id='loginModal' class='overridde-button-flat waves-effect waves-teal btn-flat' href='javascript:void(0)'>Login</a>" + 
+						"<a class='overridde-button-flat waves-effect waves-teal btn-flat' href='javascript:void(0)' onclick='events.submitModal()'>Submit</a>" +
+					"</li>" +
+				"</ul>");
 	},
 	sidebarTemplate: function(){
 		var sidebar = $("<ul id='slide-out' class='side-nav'>" +
@@ -47,12 +44,11 @@ window.template = {
 								"<span class='white-text name flow-text'><b>" + localStorage.clientName + "</b></span>" +
 								"<span class='white-text email flow-text'><b>" + localStorage.clientContact + "</b></span>" +
 							"</div></li>" +
-							"<li><a class='waves-effect' href='javascript:void(0)' onclick='events.userInfoModal()'><i class='material-icons'>info</i>User Information</a></li>" +
+							"<li><a class='waves-effect' href='javascript:void(0)' id='userInfo'><i class='material-icons'>info</i>User Information</a></li>" +
 							"<li><div class='divider'></div></li>" +
-							"<li><a class='waves-effect' href='javascript:void(0)' onclick='events.sidebarSignOut()'><i class='material-icons'>exit_to_app</i>Sign Out</a></li>" +
+							"<li><a class='waves-effect' href='javascript:void(0)' id='sidebarSignOut'><i class='material-icons'>exit_to_app</i>Sign Out</a></li>" +
 						"</ul>");
-		$(".sidebarMain").html(sidebar);
-		$(".button-collapse").sideNav();
+		return sidebar;
 	},
 	//render foods with card template
 	cardTemplate: function(id, item, price, image){
@@ -67,10 +63,10 @@ window.template = {
 								"<p class='price'>" + price + "</p>" +
 							"</div>" +
 							"<div class='override-card-action card-action'>" +
-								"<button class='waves-effect waves-light btn override-card-button' onclick='events.minusItemCount(\"" + item + "\"" + ", " + "\"" + price + "\"" + ", event)'><i class='material-icons md-light'>remove</i>" +
+								"<button class='waves-effect waves-light btn override-card-button' onclick='specialCase.minusItemCount(\"" + item + "\"" + ", " + "\"" + price + "\"" + ", event)'><i class='material-icons md-light'>remove</i>" +
 								"</button>" +
 								"<input type='text' readonly='true' class='override-card-input itemCount' value='0'/>" +
-								"<button class='waves-effect waves-light btn override-card-button' onclick='events.addItemCount(\"" + item + "\"" + ", " + "\"" + price + "\"" + ", event)'><i class='material-icons md-light'>add</i>" +
+								"<button class='waves-effect waves-light btn override-card-button' onclick='specialCase.addItemCount(\"" + item + "\"" + ", " + "\"" + price + "\"" + ", event)'><i class='material-icons md-light'>add</i>" +
 								"</button>" +
 							"</div>" +
 						"</div>" +

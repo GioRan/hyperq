@@ -2,53 +2,44 @@ window.functions = {
 	//filter router routes
 	filterRouter: function(data){
 		if(data.page != "" && data.param1 == ""){
-			$("body").append("<div class='navbarMain'></div>");
-			$("body").append("<div class='sidebarMain'></div>");
-			$("body").append("<div class='indexMain'></div>");
 			switch(data.page){
-				case "register":
-					window.template.registerTemplate();
-					break;
-				case "login":
-					window.services.checkLoginSession(function success(result){
-						var result = JSON.parse(result);
-						if(result.status == 1){
-							window.location.href = "./index";
-						} else if(result.status == 0){
-							window.template.loginTemplate();
-						}
-					});
-					break;
 				case "index":
-					window.template.navbarTemplate();
-					window.template.sidebarTemplate();
+					$("body").append("<div class='navbarMain'></div>");
+					$("body").append("<div class='sidebarMain'></div>");
+					$("body").append("<div class='indexMain'></div>");
+					window.functions.initializeNavbar();
+					window.functions.initializeSidebar();
 					window.functions.initializeFoods();
 					break;
 				case "مشرف":
-					$("head").append("<script async src='./scripts/admin.js'></script>");
+					var adminJS = $("<script async src='./scripts/admin.js'></script>")
+					$("head").append(adminJS);
 					break;
 				default:
 					return false;
 			}
-		} /*else if(data.page != "" && data.param1 != ""){
-			switch(data.page && data.param1){
-				case "index" && "userInfo":
-					window.services.checkLoginSession(function success(result){
-						var result = JSON.parse(result);
-						if(result.status == 1){
-							//window.info.pushToClientInfo(result.user);
-							window.template.navbarTemplate();
-							window.template.sidebarTemplate();
-							window.template.userInfoTemplate();
-						} else if(result.status == 0){
-							window.location.href = "./login";
-						}
-					});	
-					break;
-				default:
-					return false;
-			}
-		}*/
+		}
+	},
+	initializeNavbar: function(){
+		var navbar = window.template.navbarTemplateMain();
+		$(".navbarMain").html(navbar);
+		
+		var isLoggedIn = window.info.client.isLoggedIn;
+		if(isLoggedIn){
+			var navbarLoggedIn = window.template.navbarLoggedInTemplate();
+			$("#override-navbar-wrapper").html(navbarLoggedIn);
+			
+		} else{
+			var navbarNotLoggedIn = window.template.navbarNotLoggedInTemplate();
+			$("#override-navbar-wrapper").html(navbarNotLoggedIn);
+			window.events.loginModal();
+		}
+	},
+	initializeSidebar: function(){
+		var sidebar = window.template.sidebarTemplate();
+		$(".sidebarMain").html(sidebar);
+		$(".button-collapse").sideNav();
+		window.events.sidebarSignOut();
 	},
 	initializeFoods: function(){
 		window.services.getFoods(function success(result){
@@ -126,8 +117,8 @@ window.functions = {
 				} else{
 					window.info.pushToClientInfo(result.user);
 					window.info.client.isLoggedIn = true;
-					window.template.navbarTemplate();
-					window.template.sidebarTemplate();
+					window.functions.initializeNavbar();
+					window.functions.initializeSidebar();
 					$("#progress").removeClass("progress");
 					$(".modal").modal("close");
 				}
@@ -139,14 +130,7 @@ window.functions = {
 			$(".modal").modal("close");
 			var modal = window.template.userInfoNoUpdateModal();
 			$("#modalContainer").html(modal);
-			$(".modal").modal({
-				dismissible: true, // Modal can be dismissed by clicking outside of the modal
-				opacity: .5, // Opacity of modal background
-				inDuration: 300, // Transition in duration
-				outDuration: 200, // Transition out duration
-				startingTop: '4%', // Starting top style attribute
-				endingTop: '30%' // Ending top style attribute
-			}).modal("open");
+			window.templateOptions.userInfoNoUpdateModalOption();
 		} else{
 			if(data.name.trim() == ""){
 				$("#fullnameError").html("<span class='mdl-textfield__error'>This field is required.</span>");
@@ -165,14 +149,7 @@ window.functions = {
 						$(".modal").modal("close");
 						var modal = window.template.userInfoSavedModal();
 						$("#modalContainer").html(modal);
-						$(".modal").modal({
-							dismissible: true, // Modal can be dismissed by clicking outside of the modal
-							opacity: .5, // Opacity of modal background
-							inDuration: 300, // Transition in duration
-							outDuration: 200, // Transition out duration
-							startingTop: '4%', // Starting top style attribute
-							endingTop: '30%' // Ending top style attribute
-						}).modal("open");
+						window.templateOptions.userInfoSavedModalOption();
 					}
 				});
 			}

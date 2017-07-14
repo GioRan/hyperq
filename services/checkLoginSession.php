@@ -1,6 +1,6 @@
 <?php
 	require('connection/connection.php');
-	if(session_status() != PHP_SESSION_ACTIVE){
+	if(session_status() != 2){
 		session_start();
 	}
 	$data = new stdClass();
@@ -17,6 +17,7 @@
 			$user->id = $row['user_id'];
 			$user->name = $row['name'];
 			$user->contact = $row['contact'];
+			$user->order_status = $row['order_status'];
 			
 			$data->user = $user;
 			$data->status = 1;
@@ -26,5 +27,5 @@
 		$data->status = 0;
 		echo json_encode($data);
 	}
-	//session_destroy();
+	
 ?>

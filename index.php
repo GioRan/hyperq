@@ -23,6 +23,6 @@
 			param1: "<?php echo $param1; ?>"
 		}
 		var init = new window.initialize(request);
-		var events = new window.events;
+		var specialCase = new window.specialCase;
 	</script>
 </html>
