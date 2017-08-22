@@ -3,7 +3,7 @@
 
 	if (isset($_POST['order'])) {
 		$data =  $_POST['order'];
-		$orderId = uniqid();
+		//$orderId = uniqid();
 		$date = date('Y-m-d H:i:s');
 		$status = array();
 		$client = "";
@@ -13,7 +13,7 @@
 			$clientId = $data[$i]['client'];
 			$count = $data[$i]['count'];
 			
-			$query = mysql_query("INSERT INTO tbl_order(order_id, item_id, user_id, count, date) VALUES('$orderId', '$itemId', '$clientId', '$count', '$date')");
+			$query = mysql_query("INSERT INTO tbl_order(order_id, item_id, user_id, count, date) VALUES(uuid(), '$itemId', '$clientId', '$count', '$date')");
 			
 			if($query){
 				array_push($status, true);

@@ -25,7 +25,8 @@ window.events = {
 		});
 	},
 	userInfoSave: function(){
-		$(".userSaveButton").click(function(){
+		$("#userInfoForm").submit(function(e){
+			e.preventDefault();
 			var data = {
 				name: $("#fullname").val(),
 				contact: $("#contactnumber").val()
@@ -45,7 +46,8 @@ window.events = {
 		});
 	},
 	loginButton: function(){
-		$(".loginButton").click(function(){
+		$("#loginForm").submit(function(e){
+			e.preventDefault();
 			var data = {
 				contact: $("#contactnumber").val(),
 				password: $("#password").val()
@@ -60,7 +62,8 @@ window.events = {
 			$(".modal-content").css({"height": "400px"});
 			componentHandler.upgradeDom();
 					
-			$(".registerButton").click(function(){
+			$("#createAccountForm").submit(function(e){
+				e.preventDefault();
 				var data = {
 					name: $("#fullname").val(),
 					contact: $("#contactnumber").val(),

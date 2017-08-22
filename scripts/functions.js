@@ -39,6 +39,7 @@ window.functions = {
 		var sidebar = window.template.sidebarTemplate();
 		$(".sidebarMain").html(sidebar);
 		$(".button-collapse").sideNav();
+		window.events.userInfoModal();
 		window.events.sidebarSignOut();
 	},
 	initializeFoods: function(){
@@ -146,6 +147,7 @@ window.functions = {
 				}
 				window.services.updateInfo(data, function success(result){
 					if(result == 1){
+						window.functions.initializeSidebar();
 						$(".modal").modal("close");
 						var modal = window.template.userInfoSavedModal();
 						$("#modalContainer").html(modal);

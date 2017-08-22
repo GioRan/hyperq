@@ -184,21 +184,23 @@ window.template = {
 									"<div class='indeterminate'></div>" +
 								"</div>" +
 								"<div id='loginDiv'>" +
-									"<div id='contactTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-										"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='contactnumber'>" +
-										"<label class='mdl-textfield__label' for='contactnumber'>Contact Number</label>" +
-										"<div id='contactError'></div>" +
-									"</div>" +
-									"<div id='passwordTextField' class='mdl-textfield mdl-js-textfield 	mdl-textfield--floating-label'>" +
-										"<input class='mdl-textfield__input override-mdl-textfield__input' type='password' id='password'>" +
-										"<label class='mdl-textfield__label' for='password'>Password</label>" +
-										"<div id='passwordError'></div>" +
-									"</div>" +
+									"<form id='loginForm'>" +
+										"<div id='contactTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+											"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='contactnumber'>" +
+											"<label class='mdl-textfield__label' for='contactnumber'>Contact Number</label>" +
+											"<div id='contactError'></div>" +
+										"</div>" +
+										"<div id='passwordTextField' class='mdl-textfield mdl-js-textfield 	mdl-textfield--floating-label'>" +
+											"<input class='mdl-textfield__input override-mdl-textfield__input' type='password' id='password'>" +
+											"<label class='mdl-textfield__label' for='password'>Password</label>" +
+											"<div id='passwordError'></div>" +
+										"</div>" +
+									"</form>" +
 								"</div>" +
 							"</div>" +
 						"</div>" +		
 						"<div class='modal-footer'>" +
-							"<button type='submit' class='loginButton modal-action waves-effect waves-teal btn-flat'>SUBMIT</button>" +
+							"<button type='submit' form='loginForm' class='loginButton modal-action waves-effect waves-teal btn-flat'>SUBMIT</button>" +
 							"<button class='createAccount modal-action waves-effect waves-teal btn-flat'>REGISTER</button>" +
 						"</div>" +
 					"</div>");
@@ -211,32 +213,34 @@ window.template = {
 								"<div class='indeterminate'></div>" +
 							"</div>" +
 							"<div id='createAccountDiv'>" +
-								"<div id='fullnameTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-									"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='fullname'>" +
-									"<label class='mdl-textfield__label' for='fullname'>Full Name</label>" +
-									"<div id='fullnameError'></div>" +
-								"</div>" +
-								"<div id='contactTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-									"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='contactnumber'>" +
-									"<label class='mdl-textfield__label' for='contactnumber'>Contact Number</label>" +
-									"<div id='contactError'></div>" +
-								"</div>" +
-								"<div id='passwordTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-									"<input class='mdl-textfield__input override-mdl-textfield__input' type='password' id='password'>" +
-									"<label class='mdl-textfield__label' for='password'>Password</label>" +
-									"<div id='passwordError'></div>" +
-								"</div>" +
-								"<div id='errorpasswordTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-									"<input class='mdl-textfield__input override-mdl-textfield__input' type='password' id='repass'>" +
-									"<label class='mdl-textfield__label' for='repass'>Re-type Password</label>" +
-									"<div id='repassError'></div>" +
-								"</div>" +
+								"<form id='createAccountForm'>" +
+									"<div id='fullnameTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+										"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='fullname'>" +
+										"<label class='mdl-textfield__label' for='fullname'>Full Name</label>" +
+										"<div id='fullnameError'></div>" +
+									"</div>" +
+									"<div id='contactTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+										"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='contactnumber'>" +
+										"<label class='mdl-textfield__label' for='contactnumber'>Contact Number</label>" +
+										"<div id='contactError'></div>" +
+									"</div>" +
+									"<div id='passwordTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+										"<input class='mdl-textfield__input override-mdl-textfield__input' type='password' id='password'>" +
+										"<label class='mdl-textfield__label' for='password'>Password</label>" +
+										"<div id='passwordError'></div>" +
+									"</div>" +
+									"<div id='errorpasswordTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+										"<input class='mdl-textfield__input override-mdl-textfield__input' type='password' id='repass'>" +
+										"<label class='mdl-textfield__label' for='repass'>Re-type Password</label>" +
+										"<div id='repassError'></div>" +
+									"</div>" +
+								"</form>" +
 							"</div>" +
 							"<div id='createAccountError' class='ui error message'></div>" +
 						"</div>" +
 					"</div>" +		
 					"<div class='modal-footer'>" +
-						"<button class='registerButton modal-action waves-effect waves-teal btn-flat'>SUBMIT</button>" +
+						"<button form='createAccountForm' class='registerButton modal-action waves-effect waves-teal btn-flat'>SUBMIT</button>" +
 					"</div>");
 		return modal;
 	},
@@ -248,21 +252,23 @@ window.template = {
 									"<div class='indeterminate'></div>" +
 								"</div>" +
 								"<div id='userInfoDiv'>" +
-									"<div id='fullnameTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-										"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='fullname' value='" + window.info.client.clientName + "'>" +
-										"<label class='mdl-textfield__label' for='fullname'>Full Name</label>" +
-										"<div id='fullnameError'></div>" +
-									"</div>" +
-									"<div id='contactTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
-										"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='contactnumber' value='" + window.info.client.clientContact + "'>" +
-										"<label class='mdl-textfield__label' for='contactnumber'>Contact Number</label>" +
-										"<div id='contactError'></div>" +
-									"</div>" +
+									"<form id='userInfoForm'>" +
+										"<div id='fullnameTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+											"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='fullname' value='" + window.info.client.clientName + "'>" +
+											"<label class='mdl-textfield__label' for='fullname'>Full Name</label>" +
+											"<div id='fullnameError'></div>" +
+										"</div>" +
+										"<div id='contactTextField' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>" +
+											"<input class='mdl-textfield__input override-mdl-textfield__input' type='text' id='contactnumber' value='" + window.info.client.clientContact + "'>" +
+											"<label class='mdl-textfield__label' for='contactnumber'>Contact Number</label>" +
+											"<div id='contactError'></div>" +
+										"</div>" +
+									"</form>" +
 								"</div>" +
 							"</div>" +
 						"</div>" +		
 						"<div class='modal-footer'>" +
-							"<button type='submit' class='userSaveButton modal-action waves-effect waves-teal btn-flat'>SAVE</button>" +
+							"<button form='userInfoForm' type='submit' class='userSaveButton modal-action waves-effect waves-teal btn-flat'>SAVE</button>" +
 							"<button class='modal-action modal-close waves-effect waves-teal btn-flat'>CANCEL</button>" +
 						"</div>" +
 					"</div>");
